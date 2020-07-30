@@ -1,19 +1,23 @@
+import 'package:estudos_hasura/controller/login_controller.dart';
 import 'package:estudos_hasura/model/list_model.dart';
-import 'package:estudos_hasura/pages/listagem_controller.dart';
+import 'file:///D:/Repositorio/hasura-chat/lib/controller/listagem_controller.dart';
 import 'package:estudos_hasura/repository/listagem_imlp.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hasura_connect/hasura_connect.dart';
 
 class Listagem extends StatelessWidget {
   ListagemImpl listagemImpl = ListagemImpl();
   final controller = GetIt.I.get<ListagemController>();
+  final loginController;
+
+  Listagem({this.loginController});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Estudando Hasura!!!"),
+        title: Text("Listagem ${loginController.usuarioConectado.login}"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showDialogAddModel(context, listagemImpl),
